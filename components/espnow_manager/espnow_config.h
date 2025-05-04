@@ -1,0 +1,7 @@
+#pragma once
+
+#define ESPNOW_PMK "pmk1234567890123"
+#define ESPNOW_LMK "lmk1234567890123"
+
+#define ESPNOW_SEND_QUEUE_SIZE 10
+#define ESPNOW_RECV_QUEUE_SIZE 10
