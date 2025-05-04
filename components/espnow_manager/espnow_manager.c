@@ -20,6 +20,10 @@ typedef struct {
 static QueueHandle_t send_queue;
 static QueueHandle_t recv_queue;
 
+void OnDataRecv(const esp_now_recv_info_t *info, const uint8_t *incomingData, int len)
+{
+
+}
 static void espnow_recv_cb(const uint8_t *mac_addr, const uint8_t *data, int len) {
     if (!mac_addr || !data || len <= 0) return;
 
@@ -57,7 +61,7 @@ esp_err_t espnow_manager_init(void) {
     ESP_ERROR_CHECK(esp_wifi_start());
 
     ESP_ERROR_CHECK(esp_now_init());
-    //ESP_ERROR_CHECK(esp_now_register_recv_cb(espnow_recv_cb));
+    ESP_ERROR_CHECK(esp_now_register_recv_cb(OnDataRecv));
 
     ESP_ERROR_CHECK(esp_now_set_pmk((uint8_t *)ESPNOW_PMK));
 
